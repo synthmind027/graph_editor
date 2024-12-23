@@ -1,4 +1,4 @@
-# graph_editor
+# Graph editor
 
-> Ctrl + S    to Save  
-> Ctrl + D    to Load  
+> Ctrl + S &nbsp;&nbsp;&nbsp;&nbsp; to Save  
+> Ctrl + D &nbsp;&nbsp;&nbsp;&nbsp; to Load  
