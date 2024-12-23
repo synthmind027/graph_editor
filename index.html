@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			*{margin:0;padding:0;}
+			html, body {width:100%; height:100%;}
+			canvas {display:block;}
+		</style>
+		<script>
+
+
+			//alert('wow')
+			window.onload = () => {
+				let canvas = document.createElement('canvas')
+				document.body.appendChild(canvas)
+				window.resize = () => {
+					canvas.width = window.innerWidth
+					canvas.height = window.innerHeight
+				}
+				window.resize()
+				var ctx = canvas.getContext("2d")
+				ctx.fillStyle = 'rgb(100,100,100)'
+				ctx.fillRect(0,0,canvas.width,canvas.height)
+				document.addEventListener('keydown', (e)=>{
+					if ( e.ctrlKey && e.key == 's') {
+						e.preventDefault();
+						let el = document.createElement('a')
+						let file = new Blob(['hello, world!'], {type: 'text/plain'})
+						el.href = URL.createObjectURL(file);
+						el.download = 'data.graph'
+						//document.body.appendChild(el);
+						el.click();
+						el.remove();
+					}
+					if ( e.ctrlKey && e.key == 'd') {
+						e.preventDefault();
+						let el = document.createElement('input')
+						el.type = 'file'
+						el.onchange = (e) => {
+							var f = e.target.files[0]
+							console.log(f.name)
+							console.log(f.size)
+							console.log(f.type)
+							let reader = new FileReader()
+							reader.readAsText(f, 'UTF-8')
+							reader.onload = (eRead) => {
+								content = eRead.target.result
+								console.log(content)
+							}
+						}
+						el.click()
+						el.remove()
+					}
+				})
+			}
+
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
